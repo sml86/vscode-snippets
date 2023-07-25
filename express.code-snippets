@@ -1,0 +1,162 @@
+{
+  // Place your express-typescript-boilerplate workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  //  "scope": "javascript,typescript",
+  //  "prefix": "log",
+  //  "body": [
+  //      "console.log('$1');",
+  //      "$2"
+  //  ],
+  //  "description": "Log output to console"
+  // }
+  "Add GET route": {
+    "prefix": [
+      "route",
+      "route-get",
+      "get"
+    ],
+    "body": [
+      "${1:router}.get('${2:path}', async (request: Request, response: Response, next: NextFunction) => {",
+      "  try {",
+      "    $0",
+      "  } catch (error) {",
+      "    return next(error);",
+      "  }",
+      "});"
+    ],
+    "description": "Adds a new HTTP GET route"
+  },
+  "Add POST route": {
+    "prefix": [
+      "route",
+      "route-post",
+      "post"
+    ],
+    "body": [
+      "${1:router}.post('${2:path}', async (request: Request, response: Response, next: NextFunction) => {",
+      "  try {",
+      "    $0",
+      "  } catch (error) {",
+      "    return next(error);",
+      "  }",
+      "});"
+    ],
+    "description": "Adds a new HTTP POST route"
+  },
+  "Add PUT route": {
+    "prefix": [
+      "route",
+      "route-put",
+      "put"
+    ],
+    "body": [
+      "${1:router}.put('${2:path}', async (request: Request, response: Response, next: NextFunction) => {",
+      "  try {",
+      "    $0",
+      "  } catch (error) {",
+      "    return next(error);",
+      "  }",
+      "});"
+    ],
+    "description": "Adds a new HTTP PUT route"
+  },
+  "Add DELETE route": {
+    "prefix": [
+      "route",
+      "route-delete",
+      "delete"
+    ],
+    "body": [
+      "${1:router}.delete('${2:path}', async (request: Request, response: Response, next: NextFunction) => {",
+      "  try {",
+      "    $0",
+      "  } catch (error) {",
+      "    return next(error);",
+      "  }",
+      "});"
+    ],
+    "description": "Adds a new HTTP DELETE route"
+  },
+  "Add USE route": {
+    "prefix": [
+      "route",
+      "route-use",
+      "use"
+    ],
+    "body": [
+      "${1:router}.use('${2:path}', async (request: Request, response: Response, next: NextFunction) => {",
+      "  try {",
+      "    $0",
+      "  } catch (error) {",
+      "    return next(error);",
+      "  }",
+      "});"
+    ],
+    "description": "Adds a new HTTP USE route"
+  },
+  "Add Error Handler": {
+    "prefix": [
+      "handler",
+      "error-handler",
+      "error"
+    ],
+    "body": [
+      "export function ${1:name}(error: Error, request: Request, response: Response, next: NextFunction) {",
+      "  ${0}",
+      "  return response.status(HttpStatus.InternalServerError).end();",
+      "}"
+    ]
+  },
+  "Add Request Handler": {
+    "prefix": [
+      "handler",
+      "request-handler"
+    ],
+    "body": [
+      "export function ${1:name}(request: Request, response: Response, next: NextFunction) {",
+      "  try {",
+      "    ${0}",
+      "    return response.status(HttpStatus.OK).end();",
+      "  } catch (error) {",
+      "    return next(error);",
+      "  }",
+      "}"
+    ]
+  },
+  "Add openApi description": {
+    "prefix": [
+      "@openapi"
+    ],
+    "body": [
+      "/**",
+      " * @openapi",
+      " * /${1:path}:",
+      " *  ${2:get}:",
+      " *    description: ${3}",
+      " *    parameters:",
+      " *    - name: X-Tenant",
+      " *      in: header",
+      " *      required: true",
+      " *      schema:",
+      " *        type: string",
+      " *    tags:",
+      " *    - ${4}",
+      " *    responses:",
+      " *      200:",
+      " *        description: ${5}",
+      " *        content:",
+      " *          application/json:",
+      " *            schema:",
+      " *              type: array",
+      " *              items:",
+      " *                \\$ref: '#/components/schemas/${6}'",
+      " */"
+    ]
+  }
+}
