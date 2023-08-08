@@ -15,6 +15,59 @@
   //  ],
   //  "description": "Log output to console"
   // }
+  "Express App": {
+    "prefix": [
+      "express-app",
+      "express",
+      "app",
+      "server"
+    ],
+    "description": "Adds a new express app",
+    "body": [
+      "import express, { Application, Request, Response } from 'express';",
+      "import helmet from 'helmet';",
+      "import { Server } from 'http';",
+      "import { HttpStatus } from 'httpepper';",
+      "",
+      "/**",
+      "* exporting for better testability",
+      "*/",
+      "export let server: Server;",
+      "export let app: Application;",
+      "",
+      "try {",
+      "  const port = parseInt(process.env.PORT || '8088');",
+      "  app = express();",
+      "  app.disable('x-powered-by');",
+      "  app.use(helmet());",
+      "  app.use($1);",
+      "  app.use((_: Request, response: Response) => {",
+      "    return response.status(HttpStatus.MethodNotAllowed);",
+      "  });",
+      "  app.use($2);",
+      "  server = app.listen(port, () => {",
+      "    console.info(`Http server listening on ::${port}`);",
+      "  });",
+      "} catch (error) {",
+      "  console.error(error);",
+      "  process.exit(-1);",
+      "}"
+    ]
+  },
+  "Express Router": {
+    "prefix": [
+      "express-router",
+      "router"
+    ],
+    "description": "Adds a new router configuration",
+    "body": [
+      "import  { Router, Request, Response, NextFunction } from 'express';",
+      "",
+      "export const router = Router();",
+      "",
+      "router.use($1);",
+    ]
+  },
   "Add GET route": {
     "prefix": [
       "route",
